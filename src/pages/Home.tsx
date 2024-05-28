@@ -24,7 +24,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { serverURL } from "../helper/helper";
 
 const Home: React.FC = () => {
   const [data, setData] = useState<any[]>([]);
@@ -34,7 +33,9 @@ const Home: React.FC = () => {
     const fetchData = async () => {
       try {
         // Fetch data from your API endpoint
-        const response = await fetch(`${serverURL}/images`);
+        const response = await fetch(
+          `https://demobackend-jiv0.onrender.com/images`
+        );
         if (response.ok) {
           const jsonData = await response.json();
           setData(jsonData);
