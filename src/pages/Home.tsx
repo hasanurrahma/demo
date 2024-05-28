@@ -24,6 +24,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { serverURL } from "../helper/helper";
 
 const Home: React.FC = () => {
   const [data, setData] = useState<any[]>([]);
@@ -33,7 +34,7 @@ const Home: React.FC = () => {
     const fetchData = async () => {
       try {
         // Fetch data from your API endpoint
-        const response = await fetch("http://localhost:4000/images");
+        const response = await fetch(`${serverURL}/images`);
         if (response.ok) {
           const jsonData = await response.json();
           setData(jsonData);

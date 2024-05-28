@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { TextField, Box, Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { serverURL } from "../helper/helper";
 function Registration() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -37,10 +38,7 @@ function Registration() {
       formDataToSend.append("licensePlate", formData.licensePlate);
       formDataToSend.append("image", formData.image as File);
 
-      const response = await axios.post(
-        "http://localhost:4000/upload",
-        formDataToSend
-      );
+      const response = await axios.post(`${serverURL}/upload`, formDataToSend);
 
       console.log("Response from server:", response.data);
       setFormData({
